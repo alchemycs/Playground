@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html> <head>
+<title>Life With Canvas</title>
+</head>
+
+<body>
+<h1>Life With Canvas</h1>
+<canvas id="life" width="500" height="500" style="border: 1px solid; float:left">
+Your browser doesn't support the canvas element.
+</canvas>
+<div style="margin-left: 512px;">
+  <h2>What Is Life?</h2>
+  <p>
+  It's a 2-dimensional cellular automata. For more details, please see <a
+href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's
+Game of Life</a>.
+  </p>
+  <h2>Things To Do</h2>
+  <ul>
+    <li>Counter showing current generation</li>
+    <li>Implement WebWorkers to calculate ongoing generations in the
+    background</li>
+    <li>Input to allow user selection of time between iterations</li>
+    <li>Allow single stepping of the generation tick</li>
+    <li>Detection of stable generation or oscilation</li>
+    <li>Nicer colours - perhaps with detection of new births and
+    deaths</li>
+    <li>Serialize a generation or game into a string for easy copy and
+    paste</li>
+    <li>Save serialization into local storage for retrieval of
+    favourites etc</li>
+    <li>An edtitor!</li>
+  </ul>
+</div>
+<div style="clear: left">
+  <button id="reset">Reset</button>
+  <button id="startStop">Go</button>
+</div>
+<hr>
+<address>alchemist@alchemycs.net.au</address>
+<!-- hhmts start --> Last modified: Mon Mar 21 17:22:16 EST 2011 <!-- hhmts end -->
+<script src="life.js"></script>
+</body> </html>
