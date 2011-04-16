@@ -1,0 +1,72 @@
+/*
+    Document   : riskMatrix
+    Created on : 15/04/2011, 7:22:35 PM
+    Author     : michael
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.error {
+    background-color: #FFFFAA;
+    border: 1px dashed red;
+    padding: .5em;
+    margin: 1em 0;
+    display: none;
+}
+
+label {
+    width: 8em;
+    display:block;
+    float: left;
+}
+
+#riskRating {
+    width: 8em;
+    border: 1px solid green;
+    display:block;
+    float: left;
+}
+
+table.riskMatrix {
+    box-shadow: grey 10px 10px 80px;
+    -webkit-box-shadow: grey 10px 10px 80px;
+    -moz-box-shadow: grey 10px 10px 20px;
+    margin: 1em;
+}
+
+table.riskMatrix td {
+    cursor:pointer;
+}
+
+table.riskMatrix td, table.riskMatrix th {
+    padding: .5em;
+}
+
+table.riskMatrix th {
+    background-color: lightsteelblue;
+}
+
+table.riskMatrix td {
+    text-align: center;
+}
+
+table.riskMatrix td.low, #riskRating.low {
+    background-color: lightgreen;
+}
+
+table.riskMatrix td.medium, #riskRating.medium {
+    background-color: lightyellow;
+}
+
+table.riskMatrix td.high, #riskRating.high {
+    background-color: lightsalmon;
+}
+
+table.riskMatrix td.extreme, #riskRating.extreme {
+    background-color: lightcoral;
+}
