@@ -3,10 +3,16 @@
     <head>
         <meta charset="utf-8"/>
         <title>Five Box Risk Matrix</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
         <script src="modernizr-1.7.min.js"></script>
+
+        <!--
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        -->
+        <!-- jQuery Library + ALL jQuery Tools -->
+        <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+
         <link href="style.css" rel="stylesheet"/>
-    </head>
+   </head>
     <body>
         <h1>Five Box Risk Matrix</h1>
         <p>
@@ -31,17 +37,19 @@
             </p>
         </div>
         <div id="controllers">
-            <div>
+            <div style="clear:both">
                 <label for="consequence">Consequence:</label>
-                <input id="consequence" type="range" min="0" max="4" value="2"/>
+                <input id="consequence" type="range" min="0" max="4"
+        value="2" step="1"/>
                 (<span id="consequenceRating"></span>)
             </div>
-            <div>
+            <div style="clear:both">
                 <label for="likelihood">Likelihood:</label>
-                <input id="likelihood" type="range" min="0" max="4" value="2"/>
+                <input id="likelihood" type="range" min="0" max="4"
+        value="2" step="1"/>
                 (<span id="likelihoodRating"></span>)
             </div>
-            <div>
+            <div style="clear:both">
                 <label for="riskRating">Risk Rating:</label>
                 <span id="riskRating">&nbsp;</span>
             </div>
