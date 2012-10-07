@@ -1,34 +1,150 @@
 <!DOCTYPE html>
-<html> <head>
-<meta charset="utf-8">
-<title>Playground</title>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AlchemyCS Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A little sandbox in the cloud for me to play in">
+    <meta name="author" content="@AlchemyCS">
 
-<body>
-<h1>Playground</h1>
-<p>
-Just some stuff to play around with. Let's me peek and poke some of
-the nicer stuff in web life like canvas etc...
-</p>
-<dl>
-  <dt><a href="life/index.html">Life with canvas</a></dt>
-  <dd>A javascript implementation of <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_new">Conway's Game of Life</a> using the
-    canvas element
-  </dd>
-  <dt><a href="FiveBoxRiskMatrix/index.html">Five Box Risk Matrix</a></dt>
-  <dd>A simple proof of concept to help with determining a <a href="http://www.scu.edu.au/risk_management/index.php/5/" target="_new">risk rating</a> in a
-      <a href="http://en.wikipedia.org/wiki/Governance,_risk_management,_and_compliance" targe="_new">Governance, Risk and Compliance</a> context.
-  </dd>
-  <dt><a href="transforms/index.html">Rotational Transform</a></dt>
-  <dd>My son has some homework on rotational transforms, but the
-    examples are showing a 360&deg; transform as looking like a
-    90&deg; transform. I made this so he can explore it for himself
-    and see what transforms really look like.
-  </dd>
-</dl>
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!--
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">My Playground</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <a href="https://github.com/alchemycs/playground" class="navbar-link icon-github"> View Source</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span>Contact<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Earth App</li>
+                        <li><a href="http://www.twitter.com/EarthExplorr"><span class="icon-twitter-sign icon-large pull-right"></span>@EarthExplorr</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">The Developer</li>
+                        <li><a href="http://www.twitter.com/AlchemyCS"><span class="icon-twitter-sign icon-large pull-right"></span>@AlchemyCS</a></li>
+                        <li><a href="https://github.com/alchemycs"><span class="icon-github-sign icon-large pull-right"></span>GitHub</a></li>
+                        <li><a href="http://au.linkedin.com/in/mrmchugh"><span class="icon-linkedin-sign icon-large pull-right"></span>LinkedIN</a></li>
+                        <li><a href="http://coderwall.com/alchemycs"><span class="icon-list-alt icon-large pull-right"></span>Coderwall</a></li>
+                        <li><a href="http://forr.st/-AlchemyCS"><span class="icon-leaf icon-large pull-right"></span>Forrst</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Old Stuff</li>
+              <li ><a href="transforms/index.html">Transforms</a></li>
+              <li class=""><a href="life/index.html">Life</a></li>
+              <li><a href="FiveBoxRiskMatrix/index.html">Risk Matrix</a></li>
+              <li class="nav-header">Recent(ish)</li>
+              <li class="nav-header">Quick Reference</li>
+              <li><a href="http://angularjs.org">AngularJS</a></li>
+              <li><a href="http://dartlang.org">DART Language</a></li>
+              <li><a href="http://twitter.github.com/bootstrap/">Bootstrap (twitter)</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit hidden-phone">
+            <h1>My Web Playground</h1>
+            <p>A little sandbox in the cloud for me to play in.</p>
+            <p><a class="btn btn-primary btn-large icon-github" href="https://github.com/alchemycs/playground"> View Source &raquo;</a></p>
+          </div>
+          <div class="page-header visible-phone">
+            <h1>My Web Playground</h1>
+            <p>A little sandbox in the cloud for me to play in.</p>
+          </div>
+
+          <div class="row-fluid">
+            <div class="span4">
+              <h2>Transforms</h2>
+              <p>
+                My son had some homework on transforms and the sample for a 360&deg;
+                rotation looks more like a 90&deg; rotation so I put this together
+                to show him how rotational transforms really work.
+              </p>
+              <p><a class="btn" href="transforms/index.html">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Life</h2>
+              <p>
+                A javascript implementation of <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_new">Conway's Game of Life</a> using the
+                canvas element
+              </p>
+              <p><a class="btn" href="life/index.html">View details &raquo;</a></p>
+            </div><!--/span-->
+            <div class="span4">
+              <h2>Five Box Risk Matrix</h2>
+              <p>
+                A simple proof of concept to help with determining a <a href="http://www.scu.edu.au/risk_management/index.php/5/" target="_new">risk rating</a> in a
+                <a href="http://en.wikipedia.org/wiki/Governance,_risk_management,_and_compliance" targe="_new">Governance, Risk and Compliance</a> context.
+              </p>
+              <p><a class="btn" href="FiveBoxRiskMatrix/index.html">View details &raquo;</a></p>
+            </div><!--/span-->
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; <a href="http://twitter.com/alchemycs">@AlchemyCS</a> 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 
-<hr>
-<address></address>
-<!-- hhmts start --> Last modified: Mon May  2 22:15:02 EST 2011 <!-- hhmts end -->
-</body> </html>
+  </body>
+</html>

@@ -86,6 +86,21 @@ $(document).ready(function(){
         context.restore();
     }
 
+    function handleResize() {
+        console.log('resize');
+        var newWidth = $('#homework').width();
+        $('#homework').attr('width', newWidth);
+        $('#homework').attr('height', newWidth);
+        width = canvas.width;
+        height = canvas.height;
+        spacing = width/cellsWide;
+        redraw();
+    }
+    handleResize();
+
+    $(window).resize(handleResize);
+
+
     $('#update').click(function(){
         redraw();
     });
