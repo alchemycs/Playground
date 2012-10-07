@@ -1,194 +1,305 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Five Box Risk Matrix</title>
-        <script src="modernizr-1.7.min.js"></script>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AlchemyCS Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A quick proof of concept for assisting with assessing risks in a GRC context.">
+    <meta name="author" content="@AlchemyCS">
 
-        <!--
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-        -->
-        <!-- jQuery Library + ALL jQuery Tools -->
-        <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+    <!-- Le styles -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
-        <link href="style.css" rel="stylesheet"/>
-   </head>
-    <body>
-        <h1>Five Box Risk Matrix</h1>
-        <p>
-            A quick proof of concept for assisting with assessing risks in a
-            GRC context.
-        </p>
-        <p>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!--
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">My Playground</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <a href="https://github.com/alchemycs/playground" class="navbar-link icon-github"> View Source</a>
+            </p>
+            <ul class="nav">
+              <li class=""><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span>Contact<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Earth App</li>
+                        <li><a href="http://www.twitter.com/EarthExplorr"><span class="icon-twitter-sign icon-large pull-right"></span>@EarthExplorr</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">The Developer</li>
+                        <li><a href="http://www.twitter.com/AlchemyCS"><span class="icon-twitter-sign icon-large pull-right"></span>@AlchemyCS</a></li>
+                        <li><a href="https://github.com/alchemycs"><span class="icon-github-sign icon-large pull-right"></span>GitHub</a></li>
+                        <li><a href="http://au.linkedin.com/in/mrmchugh"><span class="icon-linkedin-sign icon-large pull-right"></span>LinkedIN</a></li>
+                        <li><a href="http://coderwall.com/alchemycs"><span class="icon-list-alt icon-large pull-right"></span>Coderwall</a></li>
+                        <li><a href="http://forr.st/-AlchemyCS"><span class="icon-leaf icon-large pull-right"></span>Forrst</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Old Stuff</li>
+              <li ><a href="../transforms/index.html">Transforms</a></li>
+              <li ><a href="../life/index.html">Life</a></li>
+              <li class="active"><a href="index.html">Risk Matrix</a></li>
+              <li class="nav-header">Recent(ish)</li>
+              <li class="nav-header">Quick Reference</li>
+              <li><a href="http://angularjs.org">AngularJS</a></li>
+              <li><a href="http://dartlang.org">DART Language</a></li>
+              <li><a href="http://twitter.github.com/bootstrap/">Bootstrap (twitter)</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="page-header">
+            <h1>Five Box Risk Matrix</h1>
+            <p class="lead">A quick proof of concept for assisting with assessing risks in a GRC context</p>
+          </div>
+
+        <div class="alert">
             You'll need an HTML 5 compatible browser that supports the
             <em>range</em> input type and javascript.
-        </p>
-        <div class="error">
-            <p>
-                Please update your browser to one that supports HTML5.
-                With modern browsers the the Consequence and Likelihood selection
-                will appear as native sliding controls.
-            </p>
-        </div>
-        <div>
-            <p>
-                Use the slider controls to set the <em>consequence</em> and <em>likelihood</em>
-                or alternatively simply click on one of the cells in the risk matrix.
-            </p>
-        </div>
-        <div id="controllers">
-            <div style="clear:both">
-                <label for="consequence">Consequence:</label>
-                <input id="consequence" type="range" min="0" max="4"
-        value="2" step="1"/>
-                (<span id="consequenceRating"></span>)
-            </div>
-            <div style="clear:both">
-                <label for="likelihood">Likelihood:</label>
-                <input id="likelihood" type="range" min="0" max="4"
-        value="2" step="1"/>
-                (<span id="likelihoodRating"></span>)
-            </div>
-            <div style="clear:both">
-                <label for="riskRating">Risk Rating:</label>
-                <span id="riskRating">&nbsp;</span>
-            </div>
         </div>
 
 
-        <table class="riskMatrix" style="clear: both">
-            <tr>
-                <th>
-                    Likelihood
-                </th>
-                <th colspan="5">
-                    Consequences
-                </th>
-            </tr>
-            <tr>
-                <th>
+          <div class="row-fluid">
+            <div class="span6">
+        
+                <div>
+                    <h2>Instructions</h2>
+                    <p>
+                        Use the slider controls to set the <em>consequence</em> and <em>likelihood</em>
+                        or alternatively simply click on one of the cells in the risk matrix.
+                    </p>
+                    <p>
+                        Alternatively you can click on the cell in the table to select the rating directly.
+                    </p>
+                </div>
+                <div id="controllers" class="well">
+                    <div style="clear:both">
+                        <label for="consequence">Consequence:</label>
+                        <input id="consequence" type="range" min="0" max="4" value="2" step="1"/>
+                        (<span id="consequenceRating"></span>)
+                    </div>
+                    <div style="clear:both">
+                        <label for="likelihood">Likelihood:</label>
+                        <input id="likelihood" type="range" min="0" max="4" value="2" step="1"/>
+                        (<span id="likelihoodRating"></span>)
+                    </div>
+                    <div style="clear:both">
+                        <label for="riskRating">Risk Rating:</label>
+                        <span id="riskRating">&nbsp;</span>
+                    </div>
+                </div>
+        
+        
+                <table class="riskMatrix table table-bordered" >
+                    <tr>
+                        <th>
+                            Likelihood
+                        </th>
+                        <th colspan="5">
+                            Consequences
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+        
+                        </th>
+                        <th>
+                            Insignificant
+                        </th>
+                        <th>
+                            Minor
+                        </th>
+                        <th>
+                            Moderate
+                        </th>
+                        <th>
+                            Major
+                        </th>
+                        <th>
+                            Catastrophic
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Almost Certain
+                        </th>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="extreme">
+                            Extreme
+                        </td>
+                        <td class="extreme">
+                            Extreme
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Likely
+                        </th>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="extreme">
+                            Extreme
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Moderate
+                        </th>
+                        <td class="low">
+                            Low
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Unlikely
+                        </th>
+                        <td class="low">
+                            Low
+                        </td>
+                        <td class="low">
+                            Low
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Rare
+                        </th>
+                        <td class="low">
+                            Low
+                        </td>
+                        <td class="low">
+                            Low
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="medium">
+                            Medium
+                        </td>
+                        <td class="high">
+                            High
+                        </td>
+                    </tr>
+        
+                </table>
 
-                </th>
-                <th>
-                    Insignificant
-                </th>
-                <th>
-                    Minor
-                </th>
-                <th>
-                    Moderate
-                </th>
-                <th>
-                    Major
-                </th>
-                <th>
-                    Catastrophic
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    Almost Certain
-                </th>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="extreme">
-                    Extreme
-                </td>
-                <td class="extreme">
-                    Extreme
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Likely
-                </th>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="extreme">
-                    Extreme
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Moderate
-                </th>
-                <td class="low">
-                    Low
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="high">
-                    High
-                </td>
-                <td class="high">
-                    High
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Unlikely
-                </th>
-                <td class="low">
-                    Low
-                </td>
-                <td class="low">
-                    Low
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="high">
-                    High
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Rare
-                </th>
-                <td class="low">
-                    Low
-                </td>
-                <td class="low">
-                    Low
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="medium">
-                    Medium
-                </td>
-                <td class="high">
-                    High
-                </td>
-            </tr>
+            </div>
+            <div class="span6">
+                <h2>Further Work</h2>
+                <ul>
+                    <li>
+                        Fallbacks for sliders to drop downs
+                    </li>
+                    <li>
+                        Highlight active cell and Consequence/Likelihood header cells
+                    </li>
+                    <li>
+                        Convert to an AngularJS directive - could be very useful
+                    </li>
+                </ul>
+            </div>
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
 
-        </table>
+      <hr>
 
-        <script src="riskmatrix.js">
-        </script>
-    </body>
+      <footer>
+        <p>&copy; <a href="http://twitter.com/alchemycs">@AlchemyCS</a> 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="riskmatrix.js"></script>
+
+
+  </body>
 </html>

@@ -25,3 +25,8 @@ GRC systems always have these lovely boxes with colours that you
 are expected to use to rate your risks. Most of the systems I have
 seen are pretty crap, so thought I would just whack this proof of
 concept together for making something a little more palatable.
+=======
+
+Life (2D Cellular Automata)
+---------------------------
+A little look at the canvas element by implementing Conway's game of life.

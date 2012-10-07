@@ -148,13 +148,28 @@
 	}
     }
 
+
+    function handleResize() {
+        var width = $('#life').width();
+        $('#life').attr('width', width);
+        $('#life').attr('height', width);
+        cellWidth = canvas.width / lifeWidth;
+        cellHeight = canvas.height / lifeHeight;
+        drawWorld();
+    }
+
     //Initialise the world and draw it
     initialise();
+    handleResize(); //To initialise the canvas size
     drawWorld();
 
+    $(window).resize(handleResize);
+
     //Set up our button handlers
-    document.getElementById('startStop').addEventListener('click', toggleRunning, true);
-    document.getElementById('reset').addEventListener('click', resetAction, true);
+    $('#startStop').click(toggleRunning);
+    $('#reset').click(resetAction);
+//    document.getElementById('startStop').addEventListener('click', toggleRunning, true);
+//    document.getElementById('reset').addEventListener('click', resetAction, true);
 
     //Reset the world by randomising it and drawing it again
     function resetAction() {
@@ -169,13 +184,17 @@
 		calculateNextGeneration(); //...that calculates the next generation..
 		drawWorld(); //...and draws it!
 	    }, 5); // every second thanks
-	    this.innerHTML = "Pause"; //Toggle the buttons label...
+	    this.innerHTML = " Pause"; //Toggle the buttons label...
 	    document.getElementById("reset").disabled = true; //And the resets enabled state
+        $('#startStop').removeClass('icon-play');
+        $('#startStop').addClass('icon-pause');
 	} else { // BUT ... if we have a timer we are already running so...
 	    clearInterval(hTimer); //...cancel the timer...
 	    hTimer = null; //...and remember we have done so..
-	    this.innerHTML = "Go"; //..update the label
+	    this.innerHTML = " Go"; //..update the label
 	    document.getElementById("reset").disabled = false; //...and enabled the reset!
+        $('#startStop').removeClass('icon-pause');
+        $('#startStop').addClass('icon-play');
 	}
     }
 

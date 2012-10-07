@@ -32,9 +32,6 @@ $(document).ready(function() {
         $("#riskRating").html($(cellQuery).html()).removeClass().addClass($(cellQuery).attr("class"));
     }
 
-    $("#consequence").rangeinput();
-    $("#likelihood").rangeinput();
-
     $("#consequence").change(updateRiskRating);
     $("#likelihood").change(updateRiskRating);
 
@@ -43,8 +40,10 @@ $(document).ready(function() {
 	var table = $("table.riskMatrix")
         var row = $(this).parent().parent().children().index($(this).parent())-2;
 
-        $("#consequence").prev().data("rangeinput").setValue(column);
-        $("#likelihood").prev().data("rangeinput").setValue(likelihoodLabel.length-row-1);
+//        $("#consequence").prev().data("rangeinput").setValue(column);
+//        $("#likelihood").prev().data("rangeinput").setValue(likelihoodLabel.length-row-1);
+        $("#consequence").val(column);
+        $("#likelihood").val(likelihoodLabel.length-row-1);
         updateRiskRating();
         //alert(column);
         //alert(row);

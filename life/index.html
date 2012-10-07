@@ -1,44 +1,155 @@
 <!DOCTYPE html>
-<meta charset="utf-8"/>
-<html> <head>
-<title>Life With Canvas</title>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AlchemyCS Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Two Dimensional Celluar Automata">
+    <meta name="author" content="@AlchemyCS">
 
-<body>
-<h1>Life With Canvas</h1>
-<canvas id="life" width="500" height="500" style="border: 1px solid; float:left">
-Your browser doesn't support the canvas element.
-</canvas>
-<div style="margin-left: 512px;">
-  <h2>What Is Life?</h2>
-  <p>
-  It's a 2-dimensional cellular automata. For more details, please see <a
-href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's
-Game of Life</a>.
-  </p>
-  <h2>Things To Do</h2>
-  <ul>
-    <li>Counter showing current generation</li>
-    <li>Implement WebWorkers to calculate ongoing generations in the
-    background</li>
-    <li>Input to allow user selection of time between iterations</li>
-    <li>Allow single stepping of the generation tick</li>
-    <li>Detection of stable generation or oscilation</li>
-    <li>Nicer colours - perhaps with detection of new births and
-    deaths</li>
-    <li>Serialize a generation or game into a string for easy copy and
-    paste</li>
-    <li>Save serialization into local storage for retrieval of
-    favourites etc</li>
-    <li>An edtitor!</li>
-  </ul>
-</div>
-<div style="clear: left">
-  <button id="reset">Reset</button>
-  <button id="startStop">Go</button>
-</div>
-<hr>
-<address>alchemist@alchemycs.net.au</address>
-<!-- hhmts start --> Last modified: Mon Mar 21 17:22:16 EST 2011 <!-- hhmts end -->
-<script src="life.js"></script>
-</body> </html>
+    <!-- Le styles -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <!--
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">My Playground</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <a href="https://github.com/alchemycs/playground" class="navbar-link icon-github"> View Source</a>
+            </p>
+            <ul class="nav">
+              <li class=""><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span>Contact<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-header">Earth App</li>
+                        <li><a href="http://www.twitter.com/EarthExplorr"><span class="icon-twitter-sign icon-large pull-right"></span>@EarthExplorr</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">The Developer</li>
+                        <li><a href="http://www.twitter.com/AlchemyCS"><span class="icon-twitter-sign icon-large pull-right"></span>@AlchemyCS</a></li>
+                        <li><a href="https://github.com/alchemycs"><span class="icon-github-sign icon-large pull-right"></span>GitHub</a></li>
+                        <li><a href="http://au.linkedin.com/in/mrmchugh"><span class="icon-linkedin-sign icon-large pull-right"></span>LinkedIN</a></li>
+                        <li><a href="http://coderwall.com/alchemycs"><span class="icon-list-alt icon-large pull-right"></span>Coderwall</a></li>
+                        <li><a href="http://forr.st/-AlchemyCS"><span class="icon-leaf icon-large pull-right"></span>Forrst</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Old Stuff</li>
+              <li ><a href="../transforms/index.html">Transforms</a></li>
+              <li class="active"><a href="index.html">Life</a></li>
+              <li><a href="../FiveBoxRiskMatrix/index.html">Risk Matrix</a></li>
+              <li class="nav-header">Recent(ish)</li>
+              <li class="nav-header">Quick Reference</li>
+              <li><a href="http://angularjs.org">AngularJS</a></li>
+              <li><a href="http://dartlang.org">DART Language</a></li>
+              <li><a href="http://twitter.github.com/bootstrap/">Bootstrap (twitter)</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="page-header">
+            <h1>Life With Canvas</h1>
+            <p class="lead">Two Dimensional Celluar Automata</p>
+          </div>
+
+            <h2>What Is Life?</h2>
+            <p>
+            It's a 2-dimensional cellular automata. For more details, please see <a
+            href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's
+            Game of Life</a>.
+            </p>
+
+
+          <div class="row-fluid">
+            <div class="span6">
+                <canvas id="life"  style="border: 1px solid; width:100%">
+                Your browser doesn't support the canvas element.
+                </canvas>
+              <button class="btn icon-refresh input-small" id="reset"> Reset</button>
+              <button class="btn icon-play input-small" id="startStop"> Go</button>
+                
+            </div>
+            <div class="span6">
+              <h2>Things To Do</h2>
+              <ul>
+                <li>Counter showing current generation</li>
+                <li>Implement WebWorkers to calculate ongoing generations in the
+                background</li>
+                <li>Input to allow user selection of time between iterations</li>
+                <li>Allow single stepping of the generation tick</li>
+                <li>Detection of stable generation or oscilation</li>
+                <li>Nicer colours - perhaps with detection of new births and
+                deaths</li>
+                <li>Serialize a generation or game into a string for easy copy and
+                paste</li>
+                <li>Save serialization into local storage for retrieval of
+                favourites etc</li>
+                <li>An edtitor!</li>
+              </ul>            
+            </div>
+          </div><!--/row-->
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; <a href="http://twitter.com/alchemycs">@AlchemyCS</a> 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="life.js"></script>
+
+
+  </body>
+</html>
